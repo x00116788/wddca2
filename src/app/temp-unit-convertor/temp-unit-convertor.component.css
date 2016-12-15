@@ -1,0 +1,36 @@
+.form-group{
+    width: 35em;
+    margin-left: 2em;
+}
+.form-group h4{
+    padding-left: 0em;
+}
+.form-group button{
+    background-color:#4370ba;
+    color: antiquewhite;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 1em;  
+    
+}
+button{
+    margin-top: 2em;
+}
+.row{
+    padding:1em;
+}
+.temp{
+    margin-left: 7px;
+    margin-right: 7px;
+    
+}
+#tempCalculator{
+    width: 1000px;
+    background-color: #d0d7e2;
+    text-align: center;
+    padding: 4em;
+    border-radius: 6px;
+    border: 0.1px; 
+   
+}

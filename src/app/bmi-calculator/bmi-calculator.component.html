@@ -1,3 +1,81 @@
-<p>
-  bmi-calculator works!
-</p>
+<div class="bmiCalc">
+
+ <div class="bmi">
+
+    <div class="rows">
+      <div class="col-md-10 text-center">
+        <h2>BMI Calculator</h2>         
+      </div>
+    </div> 
+
+    <div class="rows">
+      <div class="col-md-10 t  margin-bottom:2px;ext-center">
+        <h3>Enter Your Weight</h3>   
+      </div>
+    </div> 
+
+    <div class="rows">
+      <div class="col-sm-4 text-center">
+          <label for="stone">Stone</label>
+          <input class="form-control" [(ngModel)]="stone" id="stone" (keyup)="weightConversion('stone')" placeholder="Enter stone">
+      </div>
+      <div class="col-sm-4 text-center">
+          <label for="pounds">Pounds</label>
+          <input class="form-control" [(ngModel)]="pounds" id="pounds" (keyup)="weightConversion('pounds')" placeholder="Enter pounds">
+      </div>
+      <div class="col-sm-4 text-center">
+          <label for="kgs">or Kgs</label>
+          <input class="form-control" [(ngModel)]="kgs" id="kgs" (keyup)="weightConversion('kgs')" placeholder="Enter kgs">
+      </div>
+    </div> 
+
+    <div class="rows">
+      <div class="col-md-10 text-center">
+         <h3>Add Your Height</h3>  
+      </div>
+    </div> 
+
+     <div class="rows">
+      <div class="col-sm-4 text-center">
+          <label for="feet">Feet</label>
+          <input class="form-control" [(ngModel)]="feet" id="feet" (keyup)="heightConversion('feet')" placeholder="Enter feet">
+      </div>
+      
+      <div class="col-sm-4 text-center">
+          <label for="inches">Inches</label>
+          <input class="form-control" [(ngModel)]="inches" id="inches" (keyup)="heightConversion('inches')" placeholder="Enter inches">
+      </div>
+      <div class="col-sm-4 text-center">
+          <label for="metres">or Metres</label>
+          <input class="form-control" [(ngModel)]="metres" id="metres" (keyup)="heightConversion('metres')" placeholder="Enter metres">
+      </div>
+    </div>  
+
+     <div class="rows">
+      <div class="col-sm-10 text-center button">
+        <button type="submit" class="btn btn-primary" (click)="BMIcalculasion()">Calculate BMI</button>
+      </div>
+    </div>
+
+    <div class="rows">
+      <div class="col-sm-10 text-center">
+    	  <p>Enter your weight either in stones/pounds or kilograms and your height either in feet/inches or metres.</p>
+      </div>
+    </div>
+
+    <div class="rows">
+      <div class="col-sm-10 small-text">
+        <p>Result:</p>
+      </div>
+    </div>
+
+    <div class="rows">
+      <div class="col-md-10 text-center message">
+        <h3>
+          {{message}} {{range}}
+        </h3>
+      </div>
+    </div>
+    
+
+</div>

@@ -1,3 +1,29 @@
-<p>
-  temp-unit-convertor works!
-</p>
+<div class="tempCalc">
+  <div class="temp">
+
+    <h2>Temperature Unit Convertor</h2>
+    
+    <div class="row">
+      <div class="col-sm-6">
+        <label for="celcius">Celcius</label>
+        <input [(ngModel)]="celcius" (click)="checkId('cel')" class="form-control" id="celcius" placeholder="Enter a number">
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-6">
+        <label for="fahrenheit">Fahrenheit:</label>
+        <input [(ngModel)]="fahrenheit" (click)="checkId('far')" class="form-control" id="fahrenheit" placeholder="Enter a number">
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12 button">
+          <button type="submit" class="btn btn-primary" (click)="tempconversion()">convert</button>
+      </div>
+    </div>
+
+    <h3>Total conversions: {{tempcount}}</h3>
+
+  </div>
+</div>
