@@ -37,7 +37,8 @@ export class BmiCalculatorComponent implements OnInit {
     this.weightOption = id;
 
     if (this.weightOption === "stone") {
-      this.pounds = Math.round(((this.stone * 14)%14) * 100) /100;
+      this.stone = Math.floor(this.stone);
+      this.pounds = Math.round((this.stone * 14)%14) ;
       this.kgs = Math.round((this.stone * 6.3503) * 100) / 100; 
  }
 
@@ -46,7 +47,7 @@ export class BmiCalculatorComponent implements OnInit {
     }
     else {
       this.stone = Math.floor(this.kgs *  0.157473);
-      this.pounds = Math.round(((this.kgs / 0.4536) %14) * 10000) / 10000;//round to 4 decimalplaces
+      this.pounds = Math.round((this.kgs / 0.4536) %14);//round to 4 decimalplaces
     }
 
   }
@@ -64,7 +65,7 @@ export class BmiCalculatorComponent implements OnInit {
 
     // else its meters
     else {
-      this.inches = Math.round(((this.metres * 12)%12) * 100) / 10000.0;
+      this.inches = Math.round((this.metres * 12)%12);
       this.feet = Math.floor(this.metres / 0.3048);
     }
   }
