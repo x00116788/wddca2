@@ -53,7 +53,7 @@
 
      <div class="rows">
       <div class="col-sm-10 text-center button">
-        <button type="submit" class="btn btn-primary" (click)="BMIcalculasion()">Calculate BMI</button>
+        <button type="submit" class="btn btn-primary" (click)="BMIcalculation()">Calculate BMI</button>
       </div>
     </div>
 
@@ -72,10 +72,9 @@
     <div class="rows">
       <div class="col-md-10 text-center message">
         <h3>
-          {{message}} {{range}}
+          {{message}}<span [ngClass]="rangecolor()"> {{BMIrange}}</span>
         </h3>
       </div>
-    </div>
-    
+    </div>  
 
 </div>

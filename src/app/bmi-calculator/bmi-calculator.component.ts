@@ -33,83 +33,77 @@ export class BmiCalculatorComponent implements OnInit {
   BMIrange:string = "";
   message:string = "";
 
- 
   weightConversion(id) {
     this.weightOption = id;
 
     if (this.weightOption === "stone") {
-      this.pounds = (this.stone * 14) %14;
-      this.kgs = this.stone / 0.15747
-      this.pounds = Math.round(this.pounds * 100) / 100;
-      this.kgs = Math.round(this.kgs * 100) / 100; 
-      //this.stone = Math.round(this.stone );
+      this.pounds = Math.round(((this.stone * 14)%14) * 100) /100;
+      this.kgs = Math.round((this.stone * 6.3503) * 100) / 100; 
+ }
 
-    }
     else if (this.weightOption === "pounds") {
-      this.stone = this.pounds * 0.071429;
-      this.kgs = this.pounds * 0.4536;
-      this.pounds = this.pounds % 14;
-      this.kgs = Math.round(this.kgs * 100) / 100;
-      this.stone = Math.round(this.stone * 100) / 100;
+      this.kgs = Math.round((this.kgs + this.pounds * 0.4536) * 10000) / 10000;
     }
     else {
-      this.stone = this.kgs * 0.15747;
-      this.pounds = this.kgs / 0.4536;
-      this.pounds = this.pounds % 14;
-      this.stone = Math.round(this.stone * 100) / 100;
-      this.pounds = Math.round(this.pounds * 100) / 100;
+      this.stone = Math.floor(this.kgs *  0.157473);
+      this.pounds = Math.round(((this.kgs / 0.4536) %14) * 10000) / 10000;//round to 4 decimalplaces
     }
-    this.stone= this.stone-(this.pounds*0.071429)
+
   }
 
   heightConversion(id) {
     this.heightOption = id;
 
     if (this.heightOption === "inches") {
-      this.metres = this.inches * 0.0254;
-      this.feet = this.inches / 12;
-      this.metres = Math.round(this.metres * 100) / 10000;
+      this.metres = Math.round((this.metres + (this.inches * 0.0254)) * 100) / 100;
     }
 
     else if (this.heightOption === "feet") {
-      this.metres = this.feet * 0.3048;
-      this.inches = this.feet * 12.;
-      this.metres = Math.round(this.metres * 100) / 10000;
-      this.inches = Math.round(this.inches * 100) / 10000.0;
+      this.metres = Math.round((this.feet * 0.3048) * 100) / 100;
     }
 
-    // else its kgs
+    // else its meters
     else {
-      this.feet = this.metres * 3.28084;
-      this.inches = this.feet * 12;
-      this.inches = Math.round(this.inches * 100) / 10000.0;
-      this.feet = Math.round(this.feet * 100) / 10000;
+      this.inches = Math.round(((this.metres * 12)%12) * 100) / 10000.0;
+      this.feet = Math.floor(this.metres / 0.3048);
     }
   }
 
   BMIcalculation() {
-    this.bmi = this.kgs / (this.metres * this.metres);
-    this.bmi = Math.round(this.bmi * 100) / 100;
+    this.bmi = Math.round((this.kgs / (this.metres * this.metres)) * 100) / 100;
 
-    if (this.bmi >= 25) {
+    if (this.bmi >= 25 && this.bmi < 30) {
       this.message = "Your estimated BMI is " + this.bmi + ", this is in the ";
-      this.BMIrange = "Overweight Range";
+      this.BMIrange = "Overweight range";
     }
 
     else if (this.bmi >= 18 && this.bmi < 25) { 
       this.message = "Your estimated BMI is " + this.bmi + ", this is in the ";
-      this.BMIrange = "Normal Range";
+      this.BMIrange = "Normal range";
     } 
 
     else if (this.bmi >= 0 && this.bmi < 18) {
-    this.message = "Your estimated BMI is " + this.bmi + ", this is in the ";
-    this.BMIrange = "Underweight Range";
+      this.message = "Your estimated BMI is " + this.bmi + ", this is in the ";
+      this.BMIrange = "Underweight range";
+    }
+    else if (this.bmi >= 30){
+      this.message = "Your estimated BMI is " + this.bmi + ", this is in the ";
+      this.BMIrange = "Obese range";
     }
 
-    // else statement with error message for invalid values 
+    // else statement with error message for invalid or no values 
     else {
       this.message = "Values must be entered to perform calculation!";
     }
   }
+
+  rangecolor(){
+  if(this.BMIrange == "Normal Range"){
+    return "green";
+  }
+  else{
+    return "red";
+  }
+}
 
 }
